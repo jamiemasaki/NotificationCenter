@@ -1,6 +1,6 @@
 # PicoAlert — Location-Aware Notification Circuit
 
-A portable notification device built with the Raspberry Pi Pico W that filters Gmail, Discord, Substack, and Instagram alerts based on your real-time location. Instead of checking your phone every few minutes, PicoAlert lights up, beeps, and shows you what's worth your attention — depending on where you are.
+A portable notification device built with the Raspberry Pi Pico W that filters Gmail, Discord, Substack, and Instagram alerts based on your real time location. Instead of checking your phone every few minutes, PicoAlert lights up, beeps, and shows you what's worth your attention — depending on where you are.
 
 ---
 
