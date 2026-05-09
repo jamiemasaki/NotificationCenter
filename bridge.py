@@ -28,13 +28,13 @@ import discord        # For connecting to Discord as a bot
 
 # The IP address of your Pico W — shown on OLED screen at startup
 # This changes every time the Pico connects to a new WiFi network
-PICO_IP   = "192.168.50.141"
+PICO_IP   = ["..."] #enter IP
 PICO_PORT = 80
 
 # Your Gmail address and App Password (no spaces in app password)
 # Get an App Password at: myaccount.google.com > Security > App Passwords
-GMAIL_ADDRESS = "your@gmail.com"
-GMAIL_APPPASS = "yourapppwordnospaces"
+GMAIL_ADDRESS = "..." #enter SSID
+GMAIL_APPPASS = "..." #enter PASS
 
 # Your Discord bot token
 # Get this from: discord.com/developers > Your App > Bot > Reset Token
