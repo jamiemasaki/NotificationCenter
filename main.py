@@ -81,7 +81,7 @@ COLORS = {
 # List of known WiFi networks — add more as needed
 # Format: ("NetworkName", "password")  use "" for no password
 WIFI_NETWORKS = [
-    ("lifenetwork 2.4", "echanboy01$"),  # Home WiFi
+    ("...", "..."),  # Enter Home WiFi
     ("UHM", ""),                          # University WiFi
 ]
 
