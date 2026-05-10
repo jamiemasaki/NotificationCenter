@@ -39,7 +39,8 @@ GMAIL_APPPASS = "..." #enter PASS
 # Your Discord bot token
 # Get this from: discord.com/developers > Your App > Bot > Reset Token
 DISCORD_TOKEN = "your_discord_token"
-
+WATCHED_SERVER_ID = "your_discord_server_ID"
+WATCHED_CHANNELS = ["your_channel", ""]
 # List of Substack RSS feeds you want notifications from
 # Format: https://newslettername.substack.com/feed
 SUBSTACK_FEEDS = [
@@ -196,7 +197,12 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    # Only notify if you are mentioned OR it is a direct message
+    # Check all the conditions that should trigger a notification
+    is_dm            =isinstance(message.channel,discord.DMChannel)
+    is_mention       =bot.user.mentioned_in(message)
+    is_watchedserver = message.guild and message.guild.id in WATCHED_SERVER_IDS
+    is_watched_channel = message.channel.name in WATCHED_CHANNELS
+    
     if bot.user.mentioned_in(message) or isinstance(message.channel, discord.DMChannel):
         preview = message.content[:30]
         notify_pico("Discord", f"{message.author.name}: {preview}")
