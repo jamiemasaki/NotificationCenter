@@ -39,7 +39,8 @@ GMAIL_APPPASS = "..." #enter PASS
 # Your Discord bot token
 # Get this from: discord.com/developers > Your App > Bot > Reset Token
 DISCORD_TOKEN = "your_discord_token"
-
+WATCHED_SERVER_IDS = [""]
+WATCHED_CHANNELS = [""]
 # List of Substack RSS feeds you want notifications from
 # Format: https://newslettername.substack.com/feed
 SUBSTACK_FEEDS = [
@@ -196,9 +197,16 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    # Only notify if you are mentioned OR it is a direct message
-    if bot.user.mentioned_in(message) or isinstance(message.channel, discord.DMChannel):
-        preview = message.content[:30]
+   # Check each condition that should trigger a notification
+    is_dm              = isinstance(message.channel, discord.DMChannel)
+    is_mention         = bot.user.mentioned_in(message)
+    is_watched_server  = (message.guild is not None and
+                          message.guild.id == WATCHED_SERVER_IDS)
+    is_watched_channel = message.channel.name in WATCHED_CHANNELS
+
+    # Notify if any of the above conditions are true
+    if is_dm or is_mention or (is_watched_server and is_watched_channel):
+        preview = message.content[:30]  # Truncate message to fit OLED
         notify_pico("Discord", f"{message.author.name}: {preview}")
 
 def run_discord():
