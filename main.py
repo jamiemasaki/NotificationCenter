@@ -81,7 +81,7 @@ COLORS = {
 # List of known WiFi networks — add more as needed
 # Format: ("NetworkName", "password")  use "" for no password
 WIFI_NETWORKS = [
-    ("...", "..."),  # Enter Home WiFi
+    ("lifenetwork 2.4", "echanboy01$"),  # Enter Home WiFi
     ("UHM", ""),                          # University WiFi
 ]
 
@@ -230,9 +230,15 @@ def should_notify(app_name, location_mode):
 # ═══════════════════════════════════════════════════════════════
 
 def show_notification(app, message, location_mode):
-    # Get the color for this location mode
-    r, g, b = COLORS.get(location_mode, (255, 255, 255))
-    set_rgb(r, g, b)   # Light up LED in location color
+    # First flash the location color briefly so you know where you are
+    r_loc, g_loc, b_loc = COLORS.get(location_mode, (255, 255, 255))
+    set_rgb(r_loc, g_loc, b_loc)
+    utime.sleep_ms(500)   # Show location color for half a second
+    led_off()
+    utime.sleep_ms(200)   # Brief pause between colors
+
+    # Then light up white to show the notification
+    set_rgb(255, 255, 255)
 
     # Display notification details on OLED
     oled.fill(0)
@@ -248,7 +254,7 @@ def show_notification(app, message, location_mode):
     beep(1200, 100)        # Second beep at higher pitch
 
     utime.sleep(5)   # Keep notification visible for 5 seconds
-    led_off()        # Turn off LED
+    led_off()        # Turn off LED — stays off until next notification
     oled.fill(0)     # Clear the OLED
     oled.show()
 
