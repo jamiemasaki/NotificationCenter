@@ -241,19 +241,22 @@ def update_oled_counts():
 # ── Button to reset notification counts ──────────────────────
 
 def check_button():
-    # Button is pulled up so it reads False when pressed
     if not button.value():
-        counts["Gmail"] = 0
-        counts["Substack"] = 0
-        counts["Discord"] = 0
-        counts["Instagram"] = 0
-        oled.fill(0)
-        oled.text("Counts cleared!", 0, 24)
-        oled.show()
-        beep(800, 100)
-        utime.sleep_ms(500)  # debounce delay
-        update_oled_counts()
-
+        utime.sleep_ms(50)      # small debounce wait
+        if not button.value():  # confirm it's still pressed
+            counts["Gmail"] = 0
+            counts["Substack"] = 0
+            counts["Discord"] = 0
+            counts["Instagram"] = 0
+            oled.fill(0)
+            oled.text("Counts cleared!", 0, 24)
+            oled.show()
+            beep(800, 100)
+            utime.sleep_ms(500)
+            update_oled_counts()
+            # Wait for button to be released before continuing
+            while not button.value():
+                utime.sleep_ms(10)
 
 def start_server():
     if not connect_wifi():
@@ -322,6 +325,7 @@ def start_server():
         except OSError:
             pass
         
+        check_button()
         check_button()
         
         now = utime.time()
