@@ -238,10 +238,7 @@ def update_oled_counts():
 
     oled.show()
 
-# ── Button to reset notification counts ───────────────────────
-button = Pin(12, Pin.IN, Pin.PULL_UP)  # Reset button on GP12
-      
-
+# ── Button to reset notification counts ──────────────────────
 
 def check_button():
     # Button is pulled up so it reads False when pressed
