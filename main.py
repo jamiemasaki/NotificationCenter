@@ -48,7 +48,7 @@ def beep(freq=1000, duration_ms=200):
 COLORS = {
     "home":   (0,   255, 0),    # green
     "university":   (128, 0,   255),  # purple
-    "travel": (0,   100, 255),  # blue
+    "travel": (0,   100, 255),  # teal
     "alert":  (255, 0,   0),    # red
     "off":    (0,   0,   0),    # off
 }
