@@ -9,7 +9,7 @@ A portable notification device built with the Raspberry Pi Pico W that filters G
 - Detects your location automatically using your WiFi network's IP address range
 - Filters notifications by location — only work apps at university, everything at home
 - Shows notifications on a 128x64 OLED display with app name and message preview
-- Lights an RGB LED in a different color for each location (green = home, purple = university, blue = travel)
+- Lights an RGB LED in a different color for each location
 - Plays a two-tone buzzer alert for allowed notifications
 - Displays a running count of unread notifications per app
 - Resets counts with a physical button press
@@ -63,8 +63,6 @@ The bridge server runs on your Mac and handles all API authentication. It sends 
 | Home | Green | Gmail, Instagram, Substack, Discord |
 | University | Purple | Gmail, Discord |
 | Dorm | Teal | Gmail, Instagram, Substack, Discord |
-| Work | Orange | Gmail, Discord |
-| Travel | Blue | Gmail, Discord |
 
 Location is detected by matching the Pico W's local IP address against known network ranges. Edit `classify_location()` in `main.py` to match your networks.
 
