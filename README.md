@@ -62,7 +62,7 @@ The bridge server runs on your Mac and handles all API authentication. It sends 
 |---|---|---|
 | Home | Green | Gmail, Instagram, Substack, Discord |
 | University | Purple | Gmail, Discord |
-| Dorm | Teal | Gmail, Instagram, Substack, Discord |
+| Travel | Teal | Gmail, Instagram, Substack, Discord |
 
 Location is detected by matching the Pico W's local IP address against known network ranges. Edit `classify_location()` in `main.py` to match your networks.
 
